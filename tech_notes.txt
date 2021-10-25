@@ -1,0 +1,90 @@
+overview
+    - create an api that will perform database actions:
+        - create (put)
+        - read (get)
+        - update (patch)
+        - delete (delete)
+
+    - another application will be sending request to the api to perform
+    database operation on a particular database
+
+    - all responses will be in json format
+
+    - the arguments for the request will be sent in the url
+        - a new feature will be created to send arguments in the body of the request
+
+    - requests will be validated before execution
+        - if requests are invalid send a custom error message to say what went wrong
+
+    
+process walk-thru
+    1. GET request
+        - client sends a request to get the status of a particular system item
+        - based on the incoming url a specific flask route is chosen
+        - the function for that route is executed
+            - this python function must be able to:
+                - return system data as if it was typed in a bash terminal
+                - be able to access files on the hard-drive
+            - the function will return the data in json format
+        - the json formated data is return to the client
+
+    2. POST request
+        - TBA
+
+
+resource needed for development/testing
+    - development environment
+        - self hosting
+            - put an api on your own machine to get system stats from that machine
+
+        - workflow
+            - create a python virtual environment name
+                - api_db
+
+        NOTES:
+            - *how to create a python virtual environment
+                - python3 -m venv api_db
+            - *how to activate a python virtual environment 
+                - source api_db/bin/activate
+            - *how to exit a python virtual environment 
+                - deactivate
+            ------------------------------------------------
+
+            - use requirement.txt with python pip
+                - how to install modules using the requirement.txt file
+                    - pip install -r requirements.txt
+
+                - how to create a custom requirement.txt file from scratch
+                    - ###### Requirements without Version Specifiers ######
+                      nose
+                      nose-cov
+                      beautifulsoup4  
+
+                    - ###### Requirements with Version Specifiers ######
+                      docopt == 0.6.1             # Version Matching. Must be version 0.6.1
+                      keyring >= 4.1.1            # Minimum version 4.1.1
+                      coverage != 3.5             # Version Exclusion. Anything except version 3.5
+                      Mopidy-Dirble ~= 1.1        # Compatible release. Same as >= 1.1, == 1.*
+
+                - how to document currently installed pip module
+                    - pip freeze >> requirement.txt
+
+                - to see the currently installed pip module
+                    - pip freeze
+                    
+            - create a branch for each endpoint
+                - PUT
+                - GET
+                - PATCH
+                - DELETE
+
+            - start with a database for the data source
+                - if there are complications working with a database, switch to an in memory 
+                data source
+
+            - test the endpoints with Postman first
+                - the testing with an application making the request will be done in the 
+                testing environment
+
+    - testing environment
+        
